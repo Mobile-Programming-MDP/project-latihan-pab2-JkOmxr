@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Karyawan {
   final String nama;
   final int umur;
@@ -16,7 +18,8 @@ class Karyawan {
       nama: json['nama'],
       umur: json['umur'],
       alamat: Alamat.fromJson(json['alamat']),
-      hobi: List<String>.from(json['hobi']));
+      hobi: List<String>.from(json["hobi"]),
+    );
   }
 }
 
@@ -28,9 +31,8 @@ class Alamat {
   Alamat({required this.jalan, required this.kota, required this.provinsi});
 
   factory Alamat.fromJson(Map<String, dynamic> json) {
+    ;
     return Alamat(
-    jalan: json['jalan'],
-    kota: json['kota'],
-    provinsi: json['provinsi']);
+        jalan: json['jalan'], kota: json['kota'], provinsi: json['provinsi']);
   }
 }
