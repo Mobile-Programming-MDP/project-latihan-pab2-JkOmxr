@@ -16,7 +16,7 @@ class Karyawan {
       nama: json['nama'],
       umur: json['umur'],
       alamat: Alamat.fromJson(json['alamat']),
-      hobi: json['hobi']);
+      hobi: List<String>.from(json['hobi']));
   }
 }
 
