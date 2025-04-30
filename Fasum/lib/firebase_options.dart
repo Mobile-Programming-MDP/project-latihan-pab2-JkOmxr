@@ -33,7 +33,10 @@ class DefaultFirebaseOptions {
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.windows:
-        return windows;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for windows - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -47,31 +50,21 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBJsPiPbNX330aa-qEMR7-5KvHDDdNFd9Q',
-    appId: '1:911015308233:web:7d6d66889f917db7c4d618',
-    messagingSenderId: '911015308233',
-    projectId: 'fel-apps',
-    authDomain: 'fel-apps.firebaseapp.com',
-    storageBucket: 'fel-apps.firebasestorage.app',
-    measurementId: 'G-RLCD9HXH04',
+    apiKey: 'AIzaSyC3ai2RLeDkIVE1ouKIRAj54FADKM7EysI',
+    appId: '1:297417949941:web:3288fe179b3121c020bbbc',
+    messagingSenderId: '297417949941',
+    projectId: 'fasum-j',
+    authDomain: 'fasum-j.firebaseapp.com',
+    databaseURL: 'https://fasum-j-default-rtdb.firebaseio.com',
+    storageBucket: 'fasum-j.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAjvxlp3OYRRg9ic4u-pshp0OK9ZgXFNPw',
-    appId: '1:911015308233:android:35db9030570338c2c4d618',
-    messagingSenderId: '911015308233',
-    projectId: 'fel-apps',
-    storageBucket: 'fel-apps.firebasestorage.app',
+    apiKey: 'AIzaSyCGwtTC4MDmcLyI-H55ucEOc2w9jGzM37A',
+    appId: '1:297417949941:android:a890c1698a91914920bbbc',
+    messagingSenderId: '297417949941',
+    projectId: 'fasum-j',
+    databaseURL: 'https://fasum-j-default-rtdb.firebaseio.com',
+    storageBucket: 'fasum-j.firebasestorage.app',
   );
-
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyBJsPiPbNX330aa-qEMR7-5KvHDDdNFd9Q',
-    appId: '1:911015308233:web:bb5d1abb4de6bf31c4d618',
-    messagingSenderId: '911015308233',
-    projectId: 'fel-apps',
-    authDomain: 'fel-apps.firebaseapp.com',
-    storageBucket: 'fel-apps.firebasestorage.app',
-    measurementId: 'G-4EZ06GPHJM',
-  );
-  
 }

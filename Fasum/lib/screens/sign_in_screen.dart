@@ -1,16 +1,16 @@
+import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fasum/screens/home_screen.dart';
 import 'package:fasum/screens/sign_up_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 
 class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+  const SignInScreen({Key? key});
 
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  SignInScreenState createState() => SignInScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class SignInScreenState extends State<SignInScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -23,37 +23,38 @@ class _SignInScreenState extends State<SignInScreen> {
         title: const Text('Sign In'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(height: 32,),
+              const SizedBox(height: 32.0),
               TextField(
                 controller: _emailController,
                 decoration: const InputDecoration(
                   labelText: 'Email',
-                  border: OutlineInputBorder()
+                  border: OutlineInputBorder(),
                 ),
               ),
-              const SizedBox(height: 16,),
+              const SizedBox(height: 16.0),
               TextField(
                 controller: _passwordController,
                 decoration: const InputDecoration(
                   labelText: 'Password',
-                  border: OutlineInputBorder()
+                  border: OutlineInputBorder(),
                 ),
                 obscureText: true,
               ),
-              const SizedBox(height: 16,),
+              const SizedBox(height: 16.0),
               ElevatedButton(
-                onPressed: () async{
+                onPressed: () async {
                   try {
                     await FirebaseAuth.instance.signInWithEmailAndPassword(
-                      email: _emailController.text, 
-                      password: _passwordController.text
+                      email: _emailController.text,
+                      password: _passwordController.text,
                     );
                     Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context)=> const HomeScreen())
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreen()),
                     );
                   } catch (error) {
                     setState(() {
@@ -61,22 +62,23 @@ class _SignInScreenState extends State<SignInScreen> {
                     });
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content:  Text(_errorMessage),
-                      )
+                        content: Text(_errorMessage),
+                      ),
                     );
                   }
                 },
                 child: const Text('Sign In'),
               ),
-              const SizedBox(height: 32,),
+              const SizedBox(height: 32.0),
               TextButton(
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const SignUpScreen()),
+                    MaterialPageRoute(
+                        builder: (context) => const SignUpScreen()),
                   );
                 },
-                child: const Text("Don't have an account? Sign Up"),
+                child: const Text('Don\'t have an account? Sign up'),
               ),
             ],
           ),
