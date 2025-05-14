@@ -200,9 +200,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
         }
       }
       final position = await Geolocator.getCurrentPosition(
-        locationSettings: const LocationSettings(
-          accuracy: LocationAccuracy.high,
-        ),
+        desiredAccuracy: LocationAccuracy.high,
       ).timeout(const Duration(seconds: 10));
       setState(() {
         _latitude = position.latitude;
