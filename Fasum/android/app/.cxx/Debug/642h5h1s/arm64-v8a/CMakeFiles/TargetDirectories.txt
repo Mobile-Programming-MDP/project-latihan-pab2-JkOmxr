@@ -1,0 +1,2 @@
+D:/IF42/project-latihan-pab2-JkOmxr/Fasum/android/app/.cxx/Debug/642h5h1s/arm64-v8a/CMakeFiles/edit_cache.dir
+D:/IF42/project-latihan-pab2-JkOmxr/Fasum/android/app/.cxx/Debug/642h5h1s/arm64-v8a/CMakeFiles/rebuild_cache.dir
