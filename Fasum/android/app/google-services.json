@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "911015308233",
-    "project_id": "fel-apps",
-    "storage_bucket": "fel-apps.firebasestorage.app"
+    "project_number": "1080679911054",
+    "firebase_url": "https://jmks48-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "jmks48",
+    "storage_bucket": "jmks48.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:911015308233:android:35db9030570338c2c4d618",
+        "mobilesdk_app_id": "1:1080679911054:android:41679a4d3738ab528dc3df",
         "android_client_info": {
           "package_name": "com.example.fasum"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAjvxlp3OYRRg9ic4u-pshp0OK9ZgXFNPw"
+          "current_key": "AIzaSyCSJihsZ8Mz-BM2bwL4b8Hw4dWs3a4BQlA"
         }
       ],
       "services": {
