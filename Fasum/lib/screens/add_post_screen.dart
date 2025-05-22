@@ -8,6 +8,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:http/http.dart' as http;
 
 class AddPostScreen extends StatefulWidget {
   const AddPostScreen({Key? key}) : super(key: key);
@@ -126,7 +127,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
       //RequestOptions ro = const RequestOptions(apiVersion: 'v1');
       final model = GenerativeModel(
         model: 'gemini-1.5-flash',
-        apiKey: 'AIzaSyDxMLBvU8zf1Ze9jAxTKx_RXzJjei08kq4',
+        apiKey: 'AIzaSyC2mgNb1ZM41T_ckO5AhehhEqPzlEnI9Do',
         //gunakan api key gemini anda
         //requestOptions: ro,
       );
@@ -200,7 +201,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
         }
       }
       final position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high,
+        locationSettings: const LocationSettings(
+          accuracy: LocationAccuracy.high,
+        ),
       ).timeout(const Duration(seconds: 10));
       setState(() {
         _latitude = position.latitude;
@@ -215,6 +218,39 @@ class _AddPostScreenState extends State<AddPostScreen> {
         _latitude = null;
         _longitude = null;
       });
+    }
+  }
+
+  Future<void> sendNotificationToTopic(String body, String senderName) async {
+    final url = Uri.parse(
+        'https://fasum-cloudd.vercel.app/'); //ganti dengan url vercel masing-masing
+    final response = await http.post(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode({
+        "topic": "berita-fasum",
+        "title": "🔔 Laporan Baru",
+        "body": body,
+        "senderName": senderName,
+        "senderPhotoUrl":
+            "https://t3.ftcdn.net/jpg/03/53/83/92/360_F_353839266_8yqhN0548cGxrl4VOxngsiJzDgrDHxjG.jpg",
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('✅ Notifikasi berhasil dikirim')),
+        );
+      }
+    } else {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('❌ Gagal kirim notifikasi: ${response.body}')),
+        );
+      }
     }
   }
 
@@ -251,6 +287,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
         'userId': uid,
       });
       if (!mounted) return;
+
+      sendNotificationToTopic(_descriptionController.text, fullName);
+
       Navigator.pop(context);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Post uploaded successfully!')),
